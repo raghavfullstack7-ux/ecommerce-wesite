@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ink: #0A0A0A;
+  --color-chalk: #FFFFFF;
+  --color-parchment: #F2F0F1;
+  --color-ash: #F0F0F0;
+  --color-smoke: #9B9B9B;
+  --color-charcoal: #5A5A5A;
+  --color-sale-neon: #E8FF00;
+  --color-danger: #FF3333;
+  --color-success: #00C851;
+  --color-gold: #F5A623;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-silky: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.04);
+  --shadow-hover: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-modal: 0 40px 100px rgba(0,0,0,0.12);
+  --shadow-3d: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+@layer base {
+  body {
+    @apply font-body text-ink bg-chalk antialiased selection:bg-sale-neon selection:text-ink;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-ink uppercase;
+  }
+}
+
+.container-fashion {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-fashion {
+    padding: 0 2rem;
+  }
+}
+
+.btn-pill {
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+}
+
+.btn-neon {
+  background-color: var(--color-sale-neon);
+  color: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.text-hero {
+  font-size: clamp(3rem, 15vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
