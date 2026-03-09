@@ -65,12 +65,13 @@ const Navbar = () => {
   return (
     <header
       style={{ top: isScrolled ? 0 : `${annonceHeight}px` }}
-      className={`fixed left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed left-0 w-full z-50 transition-all duration-500 ease-in-out ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-xl border-b border-ink/5 py-4' 
-          : 'bg-transparent py-5'
+          ? 'bg-white/80 backdrop-blur-2xl border-b border-ink/5 py-3 shadow-sm' 
+          : 'bg-transparent py-6'
       }`}
     >
+      <div className={`absolute inset-0 bg-white/40 backdrop-blur-md -z-10 transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
       <div className="container-fashion flex items-center justify-between">
         {/* Mobile Menu Toggle */}
         <button 
@@ -108,12 +109,12 @@ const Navbar = () => {
         </nav>
 
         {/* Search Bar (Desktop) */}
-        <div className="hidden md:flex items-center flex-1 max-w-md mx-8 bg-ash rounded-full px-4 py-2 text-smoke focus-within:ring-1 focus-within:ring-ink/20 transition-all">
-          <Search size={18} />
+        <div className="hidden md:flex items-center flex-1 max-w-md mx-8 bg-ash/50 border border-ink/5 focus-within:border-ink/20 focus-within:bg-white rounded-2xl px-5 py-2.5 transition-all group">
+          <Search size={18} className="text-smoke group-focus-within:text-ink transition-colors" />
           <input 
             type="text" 
             placeholder="Search for products..." 
-            className="bg-transparent border-none focus:ring-0 text-sm w-full ml-2 text-ink"
+            className="bg-transparent border-none focus:ring-0 text-sm w-full ml-3 text-ink placeholder:text-smoke/60 placeholder:font-medium"
           />
         </div>
 

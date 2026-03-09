@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, ArrowUpRight } from 'lucide-react';
+import { products } from '../data/mockData';
 
 const HomePage = () => {
   return (
@@ -105,25 +106,26 @@ const HomePage = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className="group">
-              <div className="aspect-[3/4] bg-ash rounded-[2rem] overflow-hidden mb-4 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.slice(0, 4).map((product, item) => (
+            <div key={product.id} className="group cursor-pointer">
+              <div className="aspect-[3/4] bg-ash rounded-[3rem] overflow-hidden mb-6 relative shadow-sm group-hover:shadow-hover transition-all duration-500">
+                <img src={`/src/assets/${product.image}`} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-colors" />
-                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="absolute bottom-6 right-6 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <button className="bg-white p-4 rounded-full shadow-lg hover:scale-110 active:scale-90 transition-transform">
                     <ArrowUpRight size={20} />
                   </button>
                 </div>
               </div>
-              <h3 className="font-bold text-lg leading-tight mb-1">PREMIUM OVERSIZED TEE</h3>
-              <div className="flex items-center gap-2 mb-2">
+              <h3 className="font-bold text-lg leading-tight mb-2 uppercase tracking-tight">{product.name}</h3>
+              <div className="flex items-center gap-2 mb-3 font-mono">
                 <div className="flex text-gold">
-                  {[1,2,3,4,5].map(s => <Star key={s} size={14} fill="currentColor" />)}
+                  {[1,2,3,4,5].map(s => <Star key={s} size={12} fill={s <= Math.floor(product.rating) ? "currentColor" : "none"} />)}
                 </div>
-                <span className="text-xs font-medium text-smoke">4.5/5</span>
+                <span className="text-[10px] font-bold text-smoke">{product.rating}/5</span>
               </div>
-              <p className="text-xl font-display tracking-tight">$120</p>
+              <p className="text-2xl font-display tracking-tighter">${product.price}</p>
             </div>
           ))}
         </div>
